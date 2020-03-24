@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "215476246455",
+    "firebase_url": "https://leczone-f650f.firebaseio.com",
+    "project_id": "leczone-f650f",
+    "storage_bucket": "leczone-f650f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215476246455:android:254226e66f660fbec5ba32",
+        "android_client_info": {
+          "package_name": "com.example.leczone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215476246455-lmir0delc8p01dc1lm7chqp1f86v5ars.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.leczone",
+            "certificate_hash": "4901f64c1dcbb79c1d481489adb039da1843e81d"
+          }
+        },
+        {
+          "client_id": "215476246455-a1arm61mbf3p2vbqt8ruh7sg45n9rd42.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHOlENgp0TL7RDgM2XMH5Ch5jRytgpWnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215476246455-a1arm61mbf3p2vbqt8ruh7sg45n9rd42.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
