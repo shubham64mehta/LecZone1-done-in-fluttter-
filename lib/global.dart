@@ -1,4 +1,10 @@
 library srm2.globals;
-
+List array=[];
+List array1=[];
+List array2=[];
+List array3=[];
+List array4=[];
+List array5=[];
+List array6=[];
 String selectedsubject;
 Map<dynamic,dynamic> values;

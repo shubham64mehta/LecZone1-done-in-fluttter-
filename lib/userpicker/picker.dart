@@ -9,7 +9,7 @@ class Picker extends StatefulWidget {
 }
 
 class _PickerState extends State<Picker> {
-  List<String> subjectlist=["Math","Social","Operating","Communication","Advanced"];
+  List<String> subjectlist=["Math","Social","Operating","Communication","Software","Algorithim","Advanced"];
   int selectitem;
   @override
   Widget build(BuildContext context) {

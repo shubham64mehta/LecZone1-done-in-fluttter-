@@ -17,7 +17,7 @@ import 'package:uuid/uuid.dart';
 import 'faculty.dart';
 import 'google.dart';
 
-
+bool a=false;
 class Third extends StatefulWidget {
 final String selectedsubject;
 Third({this.selectedsubject});
@@ -28,11 +28,10 @@ Third({this.selectedsubject});
 class _ThirdState extends State<Third> {
   
   FirebaseDatabase database =new FirebaseDatabase();
+  
 
   List<String> subjectlist=["Math","Social","Operating","Communication","Software","Algorithim"];
 var uid=Uuid();     
-
-
  void _showDialog() {
     // flutter defined function
     showDialog(
@@ -73,7 +72,7 @@ Data userdict;
 
 Future<List<Data>> fetchPost() async {
   final response =
-      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone1-done-in-fluttter-/master/leczone/Faculty%20Database%20.json');
+      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone1-done-in-fluttter-/master/Faculty%20Database%20.json');
 
   if (response.statusCode == 200) {
     var rb = response.body;
@@ -165,6 +164,7 @@ Future<void> addUrl(String videourl) async {
         "videourl": "true",
       }).then((_) {
         print('Transaction  committed.');
+        a=true;
       });
     } else {
       print('Transaction not committed.');

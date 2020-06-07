@@ -2,7 +2,13 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:leczone/Desgin/desgin.dart';
 import 'package:leczone/Math/math.dart';
+import 'package:leczone/Operating/Operating.dart';
+import 'package:leczone/Social/social.dart';
+import 'package:leczone/Software/software.dart';
+import 'package:leczone/advanced/advanced.dart';
+import 'package:leczone/communication/communication.dart';
 import 'package:leczone/student.dart';
 import 'Chat1.dart';
 import 'entities.dart';
@@ -63,14 +69,14 @@ class _FirstScreenState extends State<FirstScreen> {
       },
     );
   }
-
+//like this Wait dont do anything. i have another logic. If that doesnt woerk I will commit suicide 
 
 var data=List<Post>();
 Post userdict;
 
 Future<List<Post>> fetchPost() async {
   final response =
-      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone1-done-in-fluttter-/master/leczone/student.json');
+      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone1-done-in-fluttter-/master/StudentDatabse.json');
 
   if (response.statusCode == 200) {
     var rb = response.body;
@@ -220,8 +226,8 @@ if (!flag)
                 elevation: 15.0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(23.0)),
                 child: Container(
-                  width: 250,
-                  height: 130,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height/5,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(23.0),
                     color: color[index],
@@ -252,6 +258,30 @@ if (!flag)
                 if(userdict.subjects[index]=="Probability and Queuing Theory")
                 {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Math()));
+                }
+                if(userdict.subjects[index]=="Social Engineering")
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Social()));
+                }
+                if(userdict.subjects[index]=="Operating System")
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Operating()));
+                }
+                if(userdict.subjects[index]=="Desgin and Analysis of Algorithim")
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Desgin()));
+                }
+                if(userdict.subjects[index]=="Computer Communication")
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Communication()));
+                }
+                if(userdict.subjects[index]=="Advanced Progaramming Practice")
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Advanced()));
+                }
+                if(userdict.subjects[index]=="Software Engineering and Project Management")
+                {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Software()));
                 }
               },
           );

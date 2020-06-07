@@ -8,24 +8,24 @@ import 'package:uuid/uuid.dart';
 
 int index1;
 
-class Math extends StatefulWidget {
+class Desgin extends StatefulWidget {
   @override
   _MathState createState() => _MathState();
 }
 
-class _MathState extends State<Math> with SingleTickerProviderStateMixin {
+class _MathState extends State<Desgin> with SingleTickerProviderStateMixin {
   
   Animation _listAnimation;
   AnimationController _controller;
   Future<String>add()async{
-     FirebaseDatabase.instance.reference().child("Subjects").child("Math").once().then((DataSnapshot snapshot){
+     FirebaseDatabase.instance.reference().child("Subjects").child("Algorithim").once().then((DataSnapshot snapshot){
        
        values = snapshot.value;
-       array.clear();
+       array3.clear();
        values.forEach((key, value) {
 
-         FirebaseDatabase.instance.reference().child("Subjects").child("Math").child(key).child('videoUrl').once().then((DataSnapshot s){//run
-          array.add(s.value);
+         FirebaseDatabase.instance.reference().child("Subjects").child("Algorithim").child(key).child('videoUrl').once().then((DataSnapshot s){//run
+          array3.add(s.value);
           
 
        }); 
@@ -60,9 +60,9 @@ class _MathState extends State<Math> with SingleTickerProviderStateMixin {
       body: Opacity(
         opacity: _listAnimation.value,
               child: ListView.builder(
-          itemCount: array.length,
+          itemCount: array3.length,
           itemBuilder: (context,index){
-            return ChewieListItem(videoPlayerController: VideoPlayerController.network(array[index]),looping: true,);
+            return ChewieListItem(videoPlayerController: VideoPlayerController.network(array3[index]),looping: true,);
           }),
       )
     );
