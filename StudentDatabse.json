@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Shubham Mehta",
+    "id": "RA1811031010009",
+    "": "",
+    "email": "shubammehta_mr@srmuniv.edu.in",
+    "subjects": ["Probability and Queuing Theory","Social Engineering",
+                 "Operating System", "Desgin and Analysis of Algorithim",
+                 "Computer Communication","Advanced Progaramming Practice","Software Enginnering and Project Management"]
+  },
+  {
+    "name": "Deabshish Sau",
+    "id": "RA1811031010008",
+    "": "",
+    "email": "ds2478@srmist.edu.in",
+    "subjects": ["Probability and Queuing Theory","Social Engineering",
+                 "Operating System", "Desgin and Analysis of Algorithim",
+                 "Computer Communication","Advanced Progaramming Practice","Software Enginnering and Project Management"]
+  },
+   {
+    "name": "Swapnanil Dhol",
+    "id": "RA1811031010010",
+    "": "",
+    "email": "swapnanildhol_sa@srmuniv.edu.in",
+    "subjects":  ["Probability and Queuing Theory","Social Engineering",
+                 "Operating System", "Desgin and Analysis of Algorithim",
+                 "Computer Communication","Advanced Progaramming Practice","Software Enginnering and Project Management"]
+  },
+  {
+    "name": "Devahuti Gogoi",
+    "id": "RA1811031010004",
+    "": "",
+    "email": "devahutigogoi7835@gmail.com",
+    "subjects": ["Probability and Queuing Theory","Social Engineering",
+                 "Operating System", "Desgin and Analysis of Algorithim",
+                 "Computer Communication","Advanced Progaramming Practice","Software Enginnering and Project Management"]
+  },
+    {
+    "name": "Tirth Patel",
+    "id": "RA1811031010007",
+    "": "",
+    "email": "pateltirth_sa@srmuniv.edu.in",
+    "subjects": ["Probability and Queuing Theory","Social Engineering",
+                 "Operating System", "Desgin and Analysis of Algorithim","Computer Communication",
+                 "Advanced Progaramming Practice","Software Enginnering and Project Management"]
+  },
+   {
+    "name": "Shubham Mehta ",
+    "id": "RA1811031010009",
+    "": "",
+    "email": "shubham65mehta@gmail.com",
+    "subjects": ["Probability and Queuing Theory","Social Engineering",
+                 "Operating System", "Desgin and Analysis of Algorithim","Computer Communication",
+                 "Advanced Progaramming Practice","Software Enginnering and Project Management"]
+  }
+  
+]
