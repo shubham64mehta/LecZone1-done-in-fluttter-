@@ -76,7 +76,7 @@ Post userdict;
 
 Future<List<Post>> fetchPost() async {
   final response =
-      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone1-done-in-fluttter-/master/StudentDatabse.json');
+      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone2-done-in-fluttter-/master/StudentDatabse.json');
 
   if (response.statusCode == 200) {
     var rb = response.body;

@@ -72,7 +72,7 @@ Data userdict;
 
 Future<List<Data>> fetchPost() async {
   final response =
-      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone1-done-in-fluttter-/master/Faculty%20Database%20.json');
+      await http.get('https://raw.githubusercontent.com/shubham64mehta/LecZone2-done-in-fluttter-/master/Faculty%20Database%20.json');
 
   if (response.statusCode == 200) {
     var rb = response.body;
