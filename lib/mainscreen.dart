@@ -35,6 +35,7 @@ class MainScreenState extends State<MainScreen> {
   bool isLoading = false;
   List<Choice> choices = const <Choice>[
     const Choice(title: 'Settings', icon: Icons.settings),
+    const Choice(title: 'Help', icon: Icons.help_outline),
     const Choice(title: 'Log out', icon: Icons.exit_to_app),
   ];
 
@@ -123,14 +124,14 @@ class MainScreenState extends State<MainScreen> {
                     Container(
                       child: Icon(
                         Icons.exit_to_app,
-                        size: 30.0,
+                        size: 25.0,
                         color: Colors.white,
                       ),
                       margin: EdgeInsets.only(bottom: 10.0),
                     ),
                     Text(
                       'Exit app',
-                      style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       'Are you sure to exit app?',
