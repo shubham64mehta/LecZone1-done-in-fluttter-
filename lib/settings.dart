@@ -15,8 +15,8 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-       elevation: 0.0,
-       backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
       ),
       body: new SettingsScreen(),
     );
@@ -71,7 +71,7 @@ class SettingsScreenState extends State<SettingsScreen> {
     if (image != null) {
       setState(() {
         avatarImageFile = image;
-        isLoading = true;
+        isLoading = false;
       });
     }
     uploadFile();
@@ -87,10 +87,11 @@ class SettingsScreenState extends State<SettingsScreen> {
         storageTaskSnapshot = value;
         storageTaskSnapshot.ref.getDownloadURL().then((downloadUrl) {
           photoUrl = downloadUrl;
-          Firestore.instance
-              .collection('users')
-              .document(id)
-              .updateData({'nickname': nickname, 'aboutMe': aboutMe, 'photoUrl': photoUrl}).then((data) async {
+          Firestore.instance.collection('users').document(id).updateData({
+            'nickname': nickname,
+            'aboutMe': aboutMe,
+            'photoUrl': photoUrl
+          }).then((data) async {
             await prefs.setString('photoUrl', photoUrl);
             setState(() {
               isLoading = false;
@@ -130,10 +131,11 @@ class SettingsScreenState extends State<SettingsScreen> {
       isLoading = true;
     });
 
-    Firestore.instance
-        .collection('users')
-        .document(id)
-        .updateData({'nickname': nickname, 'aboutMe': aboutMe, 'photoUrl': photoUrl}).then((data) async {
+    Firestore.instance.collection('users').document(id).updateData({
+      'nickname': nickname,
+      'aboutMe': aboutMe,
+      'photoUrl': photoUrl
+    }).then((data) async {
       await prefs.setString('nickname', nickname);
       await prefs.setString('aboutMe', aboutMe);
       await prefs.setString('photoUrl', photoUrl);
@@ -169,47 +171,51 @@ class SettingsScreenState extends State<SettingsScreen> {
                               ? Material(
                                   child: CachedNetworkImage(
                                     placeholder: (context, url) => Container(
-                                          child: CircularProgressIndicator(
-                                            strokeWidth: 2.0,
-                                            valueColor: AlwaysStoppedAnimation<Color>(themeColor),
-                                          ),
-                                          width: 90.0,
-                                          height: 90.0,
-                                          padding: EdgeInsets.all(20.0),
-                                        ),
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2.0,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                themeColor),
+                                      ),
+                                      width: 90.0,
+                                      height: 90.0,
+                                      padding: EdgeInsets.all(20.0),
+                                    ),
                                     imageUrl: photoUrl,
                                     width: 90.0,
                                     height: 90.0,
                                     fit: BoxFit.cover,
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(45.0)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(80.0)),
                                   clipBehavior: Clip.hardEdge,
                                 )
                               : Icon(
                                   Icons.account_circle,
-                                  size: 90.0,
+                                  size: 100.0,
                                   color: greyColor,
                                 ))
                           : Material(
                               child: Image.file(
                                 avatarImageFile,
-                                width: 90.0,
-                                height: 90.0,
+                                width: 130.0,
+                                height: 130.0,
                                 fit: BoxFit.cover,
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(45.0)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(60.0)),
                               clipBehavior: Clip.hardEdge,
                             ),
                       IconButton(
                         icon: Icon(
-                          Icons.camera_alt,
+                          Icons.camera_alt_outlined,
                           color: primaryColor.withOpacity(0.5),
                         ),
                         onPressed: getImage,
-                        padding: EdgeInsets.all(30.0),
+                        padding: EdgeInsets.all(48.0),
                         splashColor: Colors.transparent,
                         highlightColor: greyColor,
-                        iconSize: 30.0,
+                        iconSize: 28.0,
                       ),
                     ],
                   ),
@@ -224,19 +230,87 @@ class SettingsScreenState extends State<SettingsScreen> {
                   // Username
                   Container(
                     child: Text(
-                      'Nickname',
-                      style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, color: Colors.white),
+                      'Username',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.white),
                     ),
                     margin: EdgeInsets.only(left: 10.0, bottom: 5.0, top: 10.0),
                   ),
                   Container(
                     child: Theme(
-                      data: Theme.of(context).copyWith(primaryColor: Colors.white),
+                      data: Theme.of(context)
+                          .copyWith(primaryColor: Colors.white),
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: 'Sweetie',
+                          hintText: 'Enter your user name',
                           contentPadding: new EdgeInsets.all(5.0),
-                          hintStyle: TextStyle(color: greyColor),
+                          hintStyle:
+                              TextStyle(color: Colors.white30, fontSize: 18),
+                        ),
+                        controller: controllerNickname,
+                        onChanged: (value) {
+                          nickname = value;
+                        },
+                        focusNode: focusNodeNickname,
+                      ),
+                    ),
+                    margin: EdgeInsets.only(left: 30.0, right: 30.0),
+                  ),
+                  Container(
+                    child: Text(
+                      'Year',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.white),
+                    ),
+                    margin: EdgeInsets.only(left: 10.0, bottom: 5.0, top: 10.0),
+                  ),
+                  Container(
+                    child: Theme(
+                      data: Theme.of(context)
+                          .copyWith(primaryColor: Colors.white),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Which college year are you in?',
+                          contentPadding: new EdgeInsets.all(5.0),
+                          hintStyle:
+                              TextStyle(color: Colors.white30, fontSize: 18),
+                        ),
+                        controller: controllerNickname,
+                        onChanged: (value) {
+                          nickname = value;
+                        },
+                        focusNode: focusNodeNickname,
+                      ),
+                    ),
+                    margin: EdgeInsets.only(left: 30.0, right: 30.0),
+                  ),
+                  Container(
+                    child: Text(
+                      'Branch',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.white),
+                    ),
+                    margin: EdgeInsets.only(left: 10.0, bottom: 5.0, top: 10.0),
+                  ),
+                  Container(
+                    child: Theme(
+                      data: Theme.of(context)
+                          .copyWith(primaryColor: Colors.white),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'CSE,Mech,ECE,etc.',
+                          contentPadding: new EdgeInsets.all(5.0),
+                          hintStyle:
+                              TextStyle(color: Colors.white30, fontSize: 18),
                         ),
                         controller: controllerNickname,
                         onChanged: (value) {
@@ -252,18 +326,25 @@ class SettingsScreenState extends State<SettingsScreen> {
                   Container(
                     child: Text(
                       'About me',
-                      style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.white),
                     ),
                     margin: EdgeInsets.only(left: 10.0, top: 30.0, bottom: 5.0),
                   ),
+
                   Container(
                     child: Theme(
-                      data: Theme.of(context).copyWith(primaryColor: primaryColor),
+                      data: Theme.of(context)
+                          .copyWith(primaryColor: primaryColor),
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: 'Fun, like travel and play PES...',
+                          hintText: 'Write something interesting about you',
                           contentPadding: EdgeInsets.all(5.0),
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle:
+                              TextStyle(color: Colors.white30, fontSize: 15),
                         ),
                         controller: controllerAboutMe,
                         onChanged: (value) {
@@ -281,7 +362,8 @@ class SettingsScreenState extends State<SettingsScreen> {
               // Button
               Container(
                 child: RaisedButton(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14.0)),
                   elevation: 15.0,
                   onPressed: handleUpdateData,
                   child: Text(
@@ -306,7 +388,8 @@ class SettingsScreenState extends State<SettingsScreen> {
           child: isLoading
               ? Container(
                   child: Center(
-                    child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(themeColor)),
+                    child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(themeColor)),
                   ),
                   color: Colors.white.withOpacity(0.8),
                 )
